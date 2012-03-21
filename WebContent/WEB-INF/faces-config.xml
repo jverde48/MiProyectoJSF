@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+    version="1.2">
+    
+    <!-- nombre del los beans(clases) -->
+    <managed-bean>
+    <managed-bean-name>login</managed-bean-name>
+    <managed-bean-class>mx.com.sintelti.beans.LoginBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+	<!-- reglas de navegacion -->
+	<navigation-rule>
+		<from-view-id>/login.jsp</from-view-id><!-- de que vista viene -->
+		
+		<!-- if el texto que regresa la validacion de login == "success" -->
+		<navigation-case>
+			<from-outcome>success</from-outcome><!-- cadena--> <!-- si login regresa una cadena con el texto "succes" redirige a la pagina de bienvenido -->
+			<to-view-id>/bienvenido.jsp</to-view-id><!-- a que vista redirecciona -->
+		</navigation-case>
+		<!-- fin if -->
+		
+		<!-- else if el texto que regresa la validacion de login == "error" -->
+		<navigation-case>
+			<from-outcome>error</from-outcome>
+			<to-view-id>/error.jsp</to-view-id>
+		</navigation-case>
+		<!-- fin else if -->
+	</navigation-rule>
+</faces-config>
